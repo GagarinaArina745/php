@@ -16,22 +16,12 @@ $day = 6;
 <body>
     <h1>Конструкция switch</h1>
     <?php
-    switch ($day) {
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		case 5:
-			echo 'Это рабочий день';
-			break;
-		case 6:
-		case 7:
-			echo 'Это выходной день';
-			break;
-		default:
-			echo 'Неизвестный день';
-			break;
-	}
+    $result = match ($day) {
+        1, 2, 3, 4, 5 => 'Это рабочий день',
+        6, 7 => 'Это выходной день',
+        default => 'Неизвестный день',
+    };
+    echo $result;
     ?>
 </body>
 
