@@ -1,3 +1,7 @@
+<?php
+declare(strict_types=1);
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -11,7 +15,6 @@
 <body>
     <h1>Цикл for</h1>
     <?php
-    declare(strict_types=1);
 
     /*
        ЗАДАНИЕ
