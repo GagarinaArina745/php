@@ -22,6 +22,7 @@
        L
        O
        */
+    declare(strict_types=1);
 
     $var = 'HELLO';
     $i = 0;
