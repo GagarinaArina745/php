@@ -110,7 +110,7 @@ function getTable(int $cols = 4, int $rows = 5, string $color = 'yellow'): int
     getTable(5, 5);
     echo "<br><br>";
 
-    getTable(5, 5, 'lightblue');
+    $count = getTable(5, 5, 'lightblue');
     echo "Вызовов функции: $count<br><br>";
     ?>
 </body>
