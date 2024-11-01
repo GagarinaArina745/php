@@ -1,3 +1,7 @@
+<?php
+declare(strict_types=1);
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -22,7 +26,6 @@
        L
        O
        */
-    declare(strict_types=1);
 
     $var = 'HELLO';
     $i = 0;
