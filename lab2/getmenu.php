@@ -25,10 +25,10 @@ declare(strict_types=1);
 function getMenu(array $menu, bool $vertical = true)
 {
     if ($vertical) {
-        $menuType = 'menu vertical';
+        $menuType = 'menu';
     }
     else {
-        $menuType = 'menu';
+        $menuType = 'menu novertical';
     }
 
 
@@ -58,7 +58,7 @@ function getMenu(array $menu, bool $vertical = true)
             padding: 0;
         }
 
-        .vertical li {
+        .novertical li {
             display: inline;
             padding: 5px
         }
@@ -76,6 +76,20 @@ function getMenu(array $menu, bool $vertical = true)
        ЗАДАНИЕ 4
        - Отрисуйте горизонтальное меню вызывая функцию getMenu() со вторым параметром равным false
        */
+
+       $leftMenu = [
+        ['link' => 'Домой', 'href' => 'index.php'],
+        ['link' => 'О нас', 'href' => 'about.php'],
+        ['link' => 'Контакты', 'href' => 'contact.php'],
+        ['link' => 'Таблица умножения', 'href' => 'table.php'],
+        ['link' => 'Калькулятор', 'href' => 'calc.php'],
+    ];
+
+       getMenu($leftMenu);
+
+       echo "<br><br>";
+       getMenu($leftMenu, false);
+
     ?>
 </body>
 
