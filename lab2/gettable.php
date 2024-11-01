@@ -11,6 +11,40 @@
 	- Измените код таким образом, чтобы таблица отрисовывалась в зависимости от входящих параметров $cols, $rows и $color
 	- Добавьте в объявлние функции описание типов аргументов
 	*/
+    declare(strict_types=1);
+
+    function getTable(int $cols = 4, int $rows = 5, string $color = 'yellow'): int
+{
+
+    static $count = 0;
+    $count++;
+
+    echo "<table>";
+
+    echo "<tr>";
+    echo '<th style="background-color:', $color, ';">*</th>';
+
+    for ($i = 1; $i <= $cols; $i++) {
+        echo '<th style="background-color:', $color, ';">', $i, '</th>';
+    }
+    echo "</tr>";
+
+    for ($i = 1; $i <= $rows; $i++) {
+        echo "<tr>";
+
+        echo '<th style="background-color:', $color, ';">', $i, '</th>';
+        for ($j = 1; $j <= $cols; $j++) {
+            echo "<td>", $i * $j, "</td>";
+        }
+        echo "</tr>";
+    }
+
+    echo "</table>";
+
+    return $count;
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
