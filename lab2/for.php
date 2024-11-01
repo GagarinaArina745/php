@@ -11,11 +11,13 @@
 <body>
     <h1>Цикл for</h1>
     <?php
+    declare(strict_types=1);
+
     /*
        ЗАДАНИЕ
        - Используя цикл for выведите в столбик Нечётные числа от 1 до 50
        */
-    declare(strict_types=1);
+
 
     for ($i = 1; $i <= 49; $i += 2)
         echo $i, ' ';
