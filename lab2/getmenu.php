@@ -14,6 +14,33 @@
    - Измените код таким образом, чтобы меню отрисовывалась в зависимости от входящих параметров $menu и $vertical
    - Добавьте описание функции getMenu() с помощью стандарта PHPDoc https://ru.wikipedia.org/wiki/PHPDoc
    */
+
+declare(strict_types=1);
+
+/**
+ * Функция, создающая меню.
+ * @param array $menu - массив,содержащий элементы меню и ссылки,
+ * @param bool $vertical - при true (по умолчанию) меню вертикальное, иначе - горизонтальное
+ */
+function getMenu(array $menu, bool $vertical = true)
+{
+    if ($vertical) {
+        $menuType = 'menu vertical';
+    }
+    else {
+        $menuType = 'menu';
+    }
+
+
+    echo "<ul class='$menuType'>";
+    foreach ($menu as $item)
+        echo "<li><a href={$item['href']}>{$item['link']}</a></li>";
+
+    echo "</ul>";
+
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
