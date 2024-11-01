@@ -46,23 +46,24 @@ $rows = 5;
        - Фоновый цвет ячеек первой строки и первого столбца должен быть отличным от фонового цвета таблицы
        */
 
-       echo "<table><tr>";
-		for ($i = 1; $i <= $cols; $i++) {
-			echo "<th>", $i, "</th>";
+    echo "<table><tr>";
+    for ($i = 1; $i <= $cols; $i++) {
+        echo "<th>", $i, "</th>";
+    }
+    echo "</tr>";
+
+    for ($i = 2; $i <= $rows; $i++) {
+
+        echo "<tr>";
+        echo "<th>", $i, "</th>";
+
+        for ($j = 2; $j <= $cols; $j++) {
+            echo "<td>", $i * $j, "</td>";
         }
-		echo "</tr>";
 
-		for ($i = 2; $i <= $rows; $i++) {
-
-			echo "<tr>";
-			echo "<th>", $i, "</th>";
-
-			for ($j = 2; $j <= $cols; $j++) {
-				echo "<td>", $i * $j, "</td>";
-            }
-
-			echo "</tr></table>";
-		}
+        echo "</tr>";
+    }
+    echo "</table>";
     ?>
 </body>
 
