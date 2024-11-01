@@ -100,6 +100,18 @@ function getTable(int $cols = 4, int $rows = 5, string $color = 'yellow'): int
        - Отрисуйте таблицу умножения вызывая функцию getTable() с двумя параметрами
        - Используя статическую переменную $count выведите общее число вызовов функции getTable()
        */
+
+    getTable();
+    echo "<br><br>";
+
+    getTable(5);
+    echo "<br><br>";
+
+    getTable(5, 5);
+    echo "<br><br>";
+
+    getTable(5, 5, 'lightblue');
+    echo "Вызовов функции: $count<br><br>";
     ?>
 </body>
 
