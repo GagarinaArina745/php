@@ -16,7 +16,7 @@ function getTable(int $cols = 4, int $rows = 5, string $color = 'yellow'): int
     static $count = 0;
     $count++;
 
-    echo "<table>";
+    //echo "<table>";
 
     echo "<tr>";
     echo '<th style="background-color:', $color, ';">*</th>';
@@ -35,7 +35,7 @@ function getTable(int $cols = 4, int $rows = 5, string $color = 'yellow'): int
         }
         echo "</tr>";
     }
-    echo "</table>";
+    //echo "</table>";
 
     return $count;
 }
