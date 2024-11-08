@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 - Если результат существует, выведите его
 */
 if ($result !== null)
-  echo "<h2>Результат: $result</h2>";
+  echo "<h3>Результат: $result</h3>";
 ?>
 
 <form method="post">
