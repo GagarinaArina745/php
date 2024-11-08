@@ -73,7 +73,7 @@ $hour = getdate()['hours'];
     $timeBeforeBirthday = $birthday - $now;
 
     //если lдень рождения в этом году уже прошёл
-    if ($timeToBirthday < 0) {
+    if ($timeBeforeBirthday < 0) {
         $birthday = mktime(0, 0, 0, 10, 9, (int) date('Y') + 1);
         $timeBeforeBirthday = $birthday - $now;
     }
