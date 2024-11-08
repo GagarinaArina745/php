@@ -65,3 +65,32 @@ function getMenu(array $menu, bool $vertical = true)
     echo "</ul>";
 
 }
+
+
+
+/**
+ * Функция установления приветствия
+ * @return string возвращает значение переменной приветствия
+ */
+function getWelcome()
+{
+
+    $welcome = 'Доброй ночи';
+
+    $hour = getdate()['hours'];
+
+    if ($hour >= 0 && $hour < 6) {
+        $welcome = 'Доброй ночи';
+    }
+    elseif ($hour >= 6 && $hour < 12) {
+        $welcome = 'Доброе утро';
+    }
+    elseif ($hour >= 12 && $hour < 18) {
+        $welcome = 'Добрый день';
+    }
+    elseif ($hour >= 18 && $hour < 23) {
+        $welcome = 'Добрый вечер';
+    }
+
+    return $welcome;
+}
