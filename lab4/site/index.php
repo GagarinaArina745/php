@@ -37,7 +37,7 @@ switch ($id) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?=$title?></title>
+  <title><?= $title ?></title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -48,9 +48,26 @@ switch ($id) {
 
   <section>
     <!-- Заголовок -->
-    <h1><?=$header?></h1>
+    <h1><?= $header ?></h1>
     <!-- Область основного контента -->
-    <?php include 'inc/index.inc.php'; ?>
+    <?php
+    switch ($id) {
+      case 'about':
+        include 'about.php';
+        break;
+      case 'contact':
+        include 'contact.php';
+        break;
+      case 'table':
+        include 'table.php';
+        break;
+      case 'calc':
+        include 'calc.php';
+        break;
+      default:
+        include 'index.inc.php';
+    }
+    ?>
     <!-- Область основного контента -->
   </section>
   <nav>
