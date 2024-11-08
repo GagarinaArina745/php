@@ -108,3 +108,19 @@ footer {
   color: #2A4F6F;
   background-color: transparent;
 }
+
+
+table {
+  width: 200px;
+  border-collapse: collapse;
+}
+
+table td, table th {
+  border: 1px solid #000000;
+  padding: 8px;
+}
+
+table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
