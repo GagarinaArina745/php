@@ -36,12 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         break;
       case '/':
         if ($num2 == 0)
-          $result = 'Ошибка: деление на ноль невозможно!';
+          $result = 'Ошибка - деление на ноль';
         else
           $result = $num1 / $num2;
         break;
       default:
-        $result = 'Ошибка: некорректный оператор!';
+        $result = 'Ошибка - некорректный оператор';
     }
   }
 }
