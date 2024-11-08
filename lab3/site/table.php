@@ -26,7 +26,7 @@ include 'inc/data.inc.php';
     <h1>Таблица умножения</h1>
     <!-- Заголовок -->
     <!-- Область основного контента -->
-    <form action=''>
+    <form>
       <label>Количество колонок: </label>
       <br>
       <input name='cols' type='text' value=''>
