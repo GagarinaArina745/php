@@ -65,7 +65,7 @@ $hour = getdate()['hours'];
         IntlDateFormatter::FULL,
         'Europe/Moscow',
         IntlDateFormatter::GREGORIAN,
-        "Сегодня d MMMM Y года, EEEE H:mm:ss"
+        "d MMMM Y года, EEEE H:mm:ss"
     );
 
     $formDate = datefmt_format($fmt, $now);
@@ -87,7 +87,7 @@ $hour = getdate()['hours'];
     ?>
 
     <p><?= $welcome ?>
-    <p><?= $formDate ?>
+    <p>Сегодня <?= $formDate ?>
     <p>До моего дня рождения осталось <?= "$days дней, $hours часов, $minutes минут, $seconds секунд" ?>
 
 </body>
