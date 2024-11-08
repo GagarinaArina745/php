@@ -1,11 +1,12 @@
 <?php
-/*
-   ЗАДАНИЕ 1
-   - Присвойте переменной $now значение метки времени актуальной даты(сегодня)
-   - Присвойте переменной $birthday значение метки времени Вашего дня рождения
-   - Создайте переменную $hour
-   - С помощью функции getdate() присвойте переменной $hour текущий час
-   */
+
+declare(strict_types=1);
+
+$now = time();
+$birthday = mktime(0, 0, 0, 9, 21, (int) date('Y'));
+$hour = getdate()['hours'];
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -39,7 +40,56 @@
        - На отдельной строке выведите фразу "До моего дня рождения осталось "
        - Выведите количество дней, часов, минут и секунд оставшееся до Вашего дня рождения
        */
+
+
+    if ($hour >= 0 && $hour < 6) {
+        $welcome = 'Доброй ночи';
+    }
+    elseif ($hour >= 6 && $hour < 12) {
+        $welcome = 'Доброе утро';
+    }
+    elseif ($hour >= 12 && $hour < 18) {
+        $welcome = 'Добрый день';
+    }
+    elseif ($hour >= 18 && $hour < 23) {
+        $welcome = 'Добрый вечер';
+    }
+    else {
+        $welcome = 'Доброй ночи';
+    }
+    setlocale(LC_TIME, 'ru_RU.UTF-8');
+
+    $fmt = datefmt_create(
+        'ru_RU',
+        IntlDateFormatter::FULL,
+        IntlDateFormatter::FULL,
+        'Europe/Moscow',
+        IntlDateFormatter::GREGORIAN,
+        "Сегодня d MMMM Y года, EEEE H:mm:ss"
+    );
+
+    $formDate = datefmt_format($fmt, $now);
+
+    $timeBeforeBirthday = $birthday - $now;
+
+    //если lдень рождения в этом году уже прошёл
+    if ($timeToBirthday < 0) {
+        $birthday = mktime(0, 0, 0, 10, 9, (int) date('Y') + 1);
+        $timeBeforeBirthday = $birthday - $now;
+    }
+
+    //перевод величин
+    $days = floor($timeBeforeBirthday / (60 * 60 * 24));
+    $hours = floor(($timeBeforeBirthday % (60 * 60 * 24)) / (60 * 60));
+    $minutes = floor(($timeBeforeBirthday % (60 * 60)) / 60);
+    $seconds = $timeBeforeBirthday % 60;
+
     ?>
+
+    <p><?= $welcome ?>
+    <p><?= $formDate ?>
+    <p>До моего дня рождения осталось <?= "$days дней, $hours часов, $minutes минут, $seconds секунд" ?>
+
 </body>
 
 </html>
