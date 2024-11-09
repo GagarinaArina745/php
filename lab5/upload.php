@@ -1,3 +1,8 @@
+<?php
+declare(strict_types=1);
+?>
+
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -11,14 +16,46 @@
 <body>
     <div>
         <?php
-        /*
-        ЗАДАНИЕ
-        - Проверьте, отправлялся ли файл на сервер
-        - В случае, если файл был отправлен, выведите: имя файла, размер, имя временного файла, тип, код ошибки
-        - Для проверки типа файла используйте функцию mime_content_type() из модуля Fileinfo
-        - Если загружен файл типа "image/jpeg", то с помощью функции move_uploaded_file() переместите его в каталог upload. В качестве имени файла используйте его MD5-хеш.
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['fupload'])) {
+            $file = $_FILES['fupload'];
 
-        */
+            // инфа о файле
+            echo 'Имя файла: ' . htmlspecialchars($file['name']) . "<br>";
+            echo 'Размер: ' . $file['size'] . " байт<br>";
+            echo 'Имя временного файла: ' . htmlspecialchars($file['tmp_name']) . "<br>";
+            echo 'Тип: ' . htmlspecialchars($file['type']) . "<br>";
+            echo 'Код ошибки: ' . $file['error'] . "<br>";
+
+            // Проверка успешности загрузки
+            if ($file['error'] === UPLOAD_ERR_OK) {
+                $tempFilePath = $file['tmp_name'];
+
+
+                if (mime_content_type($tempFilePath) === 'image/jpeg') {
+
+                    $uploadDir = 'upload/';
+                    if (!is_dir($uploadDir)) {
+                        mkdir($uploadDir, 0777, true);
+                    }
+
+                    // Создание хеша для имени файла
+                    $finalName = md5_file($tempFilePath) . '.jpg';
+                    $uploadFilePath = $uploadDir . $finalName;
+
+                    // Перемещение файла в папку загрузок
+                    if (move_uploaded_file($tempFilePath, $uploadFilePath)) {
+                        echo 'Файл успешно загружен в ' . htmlspecialchars($uploadFilePath);
+                    } else {
+                        echo 'Ошибка перемещения файла';
+                    }
+                } else {
+                    echo 'Неверный тип файла. Загрузите изображение в формате JPEG.';
+                }
+            } else {
+                echo 'Ошибка загрузки файла. Код: ' . $file['error'];
+            }
+        }
         ?>
 
     </div>
