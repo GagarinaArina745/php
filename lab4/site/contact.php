@@ -45,4 +45,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </form>
 <!-- Область основного контента -->
 
-<? echo $message ?>
+<? echo $msg ?>
