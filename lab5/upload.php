@@ -16,7 +16,7 @@ declare(strict_types=1);
 <body>
     <div>
         <?php
-        
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['fupload'])) {
             $file = $_FILES['fupload'];
 
@@ -27,7 +27,7 @@ declare(strict_types=1);
             echo 'Тип: ' . htmlspecialchars($file['type']) . "<br>";
             echo 'Код ошибки: ' . $file['error'] . "<br>";
 
-            // Проверка успешности загрузки
+            // Проверка успешной загрузки
             if ($file['error'] === UPLOAD_ERR_OK) {
                 $tempFilePath = $file['tmp_name'];
 
@@ -43,17 +43,17 @@ declare(strict_types=1);
                     $finalName = md5_file($tempFilePath) . '.jpg';
                     $uploadFilePath = $uploadDir . $finalName;
 
-                    // Перемещение файла в папку загрузок
+
                     if (move_uploaded_file($tempFilePath, $uploadFilePath)) {
                         echo 'Файл успешно загружен в ' . htmlspecialchars($uploadFilePath);
                     } else {
                         echo 'Ошибка перемещения файла';
                     }
                 } else {
-                    echo 'Неверный тип файла. Загрузите изображение в формате JPEG.';
+                    echo 'Ошибка - загрузите изображение в формате JPEG.';
                 }
             } else {
-                echo 'Ошибка загрузки файла. Код: ' . $file['error'];
+                echo 'Ошибка: ' . $file['error'];
             }
         }
         ?>
