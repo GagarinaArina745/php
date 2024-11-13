@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 require_once 'config-sample.php';
 
-$mysqli = new mysqli(NAME, USER, PASS, HOST_ADRESS);
+$mysqli = new mysqli(HOST_ADRESS, USER, PASS, NAME);
 
 if ($mysqli->connect_error) {
     die('Ошибка соединения: ' . $mysqli->connect_error);
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location:' . $_SERVER['PHP_SELF']);
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
+if (isset($_GET['id'])) {
     $id = intval($_GET['id']);
 
     $del_querry = "DELETE FROM msgs WHERE id = $id";
@@ -75,13 +75,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
     $selectResult = $mysqli->query($select_querry) or die('Ошибка выборки: ' . $mysqli->error);
 
     $rows = $selectResult->num_rows;
+    echo "<br>";
     echo 'Записей в гостевой книге: ' . $rows . '<br>';
 
     while ($row = $selectResult->fetch_assoc()) {
         echo "<div>";
         echo "<p><b>{$row['name']}</b> ({$row['email']})</p>";
         echo "<p>{$row['msg']}</p>";
-        echo "<a href='?delete_id={$row['id']}'>Удалить</a></div><hr>";
+        echo "<div align='right'><a href='gbook.php?id=" . $row['id'] . "'>Удалить</a></div>";
     }
 
     $mysqli->close();
