@@ -21,13 +21,12 @@ echo "<!DOCTYPE html>
 
 $user1 = new User("Арина", "arisha", "pass123");
 $user2 = new User("Андрей", "andreyy", "qwerty12345");
+$superuser = new SuperUser("Admin", "admin123", "adminadmin", "administrator");
 
+// инфа об объектах
 echo $user1->showInfo();
 echo $user2->showInfo();
-
-$superuser = new SuperUser("Admin", "admin123", "adminadmin", "administrator");
 echo $superuser->showInfo();
-
 
 // удаление объектов
 $user1 = $user2 = $superuser = null;
