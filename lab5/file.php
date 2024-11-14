@@ -5,8 +5,8 @@ const DBFILE = 'db/guests.txt';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['fname'], $_POST['lname'])) {
 
-  $fname = trim(htmlspecialchars($_POST['fname']));
-  $lname = trim(htmlspecialchars($_POST['lname']));
+  $fname = trim($_POST['fname']);
+  $lname = trim($_POST['lname']);
 
   file_put_contents(DBFILE, "$fname $lname\n", FILE_APPEND);
 
